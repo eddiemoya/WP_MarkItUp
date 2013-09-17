@@ -21,7 +21,9 @@ add_action('wp_enqueue_scripts', 'jsontest', 11);
 function jsontest(){
 
 	$config_path = apply_filters('markitup-enqueue-json', BBP_Plugin_Path."/config/enqueue.json");
-	$markitup = new BBP_Enqueue_Assets($config_path);
+	$config = json_decode(file_get_contents($config_path));
+
+	$markitup = new BBP_Enqueue_Assets($config);
 	$markitup->enqueue_assets();
 
 }
