@@ -1,0 +1,43 @@
+[
+	{
+		"type":"script", 
+		"handle":"markitup", 
+		"path":"/assets/js/vendor/markitup/markitup/jquery.markitup.js", 
+		"dep":"", 
+		"ver":"",
+		"arg":""
+	},
+	{
+		"type":"style", 
+		"handle":"markitup", 
+		"path":"/assets/js/vendor/markitup/markitup/skins/simple/style.css", 
+		"dep":"", 
+		"ver":"",
+		"arg":""
+	},
+	{
+		"type":"script", 
+		"handle":"markitup-set", 
+		"path":"/assets/js/vendor/markitup/markitup/sets/xbbcode/set.js", 
+		"dep":"markitup", 
+		"ver":"",
+		"arg":""
+	},
+	{
+		"type":"style", 
+		"handle":"markitup-set", 
+		"path":"/assets/js/vendor/markitup/markitup/sets/xbbcode/style.css", 
+		"dep":"", 
+		"ver":"",
+		"arg":""
+	},
+	{
+		"type":"script", 
+		"handle":"bbPress-editor", 
+		"path":"/assets/js/bbpress.js", 
+		"dep":"markitup-set", 
+		"ver":"",
+		"arg":""
+	}
+
+]
