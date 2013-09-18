@@ -5,26 +5,41 @@ class BBP_Enqueue_Assets {
 	/**
 	 * @var array
 	 */
-	private $config;
 	private $assets;
 
+	/**
+	 * 
+	 */
+	private $base_uri;
 
-	public function __construct($config){
-		$this->config = $config;
-	
+	/**
+	 * 
+	 */
+	public function __construct(array $assets, $base_uri){
+		$this->assets = $assets;
+		$this->base_uri = $base_uri;
 	}
 
+	/**
+	 * 
+	 */
 	public function enqueue_assets(){
-		foreach ($this->config as $config){
-			$asset = new BBP_Asset($config);
-			$asset->enqueue();
+
+		foreach($this->assets as $asset){
+			$this->enqueue($asset);
 		}
+
 	}
 
-	// public function enqueue(){
-	// 	$asset_uri = plugins_url($this->path, dirname(dirname(__FILE__)));
-	// 	$enqueue_func = "wp_enqueue_" . $this->type; 
-	// 	$enqueue_func($this->handle, $asset_uri, $this->dependancies, $this->version, $this->arg);
-	// }
+	/**
+	 * 
+	 */
+	private function enqueue(BBP_Asset $asset){
 
+		$asset_path = $this->base_uri . $asset->path
+		
+		// Use $this->type property to determine which type of enqueue function to call, script or style
+		$enqueue_func = "wp_enqueue_" . $asset->type; 
+		$enqueue_func($asset->handle, $this->base_uri.$asset->path, $asset->dependencies, $asset->version, $asset->arg);
+	}
 }
