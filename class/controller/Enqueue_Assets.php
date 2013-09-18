@@ -1,45 +1,34 @@
 <?php
+class Enqueue_Assets {
 
-class BBP_Enqueue_Assets {
-
-	/**
-	 * @var array
-	 */
+	private $base_uri;
+	private $config_path;
+	private $object_class;
 	private $assets;
 
-	/**
-	 * 
-	 */
-	private $base_uri;
 
-	/**
-	 * 
-	 */
-	public function __construct(array $assets, $base_uri){
-		$this->assets = $assets;
+	public function __construct($config_path, $object_class, $base_uri){
+		$this->config_path = $config_path;
+		$this->object_class = $object_class;
 		$this->base_uri = $base_uri;
+
+		$this->parse_config();
+		$this->enqueue_assets();
 	}
 
-	/**
-	 * 
-	 */
-	public function enqueue_assets(){
+	private function parse_config(){
 
-		foreach($this->assets as $asset){
-			$this->enqueue($asset);
-		}
+		$config = new Config_Factory($this->config_path);
+		$config->load_config();
+		$config->parse_config();
+		$config->build($this->object_class);
+
+		$this->assets = $config->get_objects();
 
 	}
 
-	/**
-	 * 
-	 */
-	private function enqueue(BBP_Asset $asset){
-
-		$asset_path = $this->base_uri . $asset->path
-		
-		// Use $this->type property to determine which type of enqueue function to call, script or style
-		$enqueue_func = "wp_enqueue_" . $asset->type; 
-		$enqueue_func($asset->handle, $this->base_uri.$asset->path, $asset->dependencies, $asset->version, $asset->arg);
+	private function enqueue_assets(){
+		$markitup = new Asset_Enqueuer($this->assets, $this->base_uri);
+		$markitup->enqueue_assets();
 	}
 }
