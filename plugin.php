@@ -1,7 +1,7 @@
 <?php /*
 Plugin Name: WP MarkItUp!
 Plugin URI: https://github.com/eddiemoya/WP_MarkItUp
-Description: Sets up MarkItUp! jQuery for easy integration with WordPress.
+Description: Sets up MarkItUp! jQuery plugin for easy integration with WordPress.
 Version: 0.1
 Author: Eddie Moya
 Author URL: http://eddiemoya.com
