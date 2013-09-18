@@ -13,7 +13,12 @@ class Enqueue_Assets {
 		$this->base_uri = $base_uri;
 
 		$this->parse_config();
-		$this->enqueue_assets();
+		$this->add_actions();
+
+	}
+
+	public function add_actions(){
+		add_action('wp_enqueue_scripts', array($this, 'enqueue_assets'), 11);
 	}
 
 	private function parse_config(){
@@ -27,7 +32,7 @@ class Enqueue_Assets {
 
 	}
 
-	private function enqueue_assets(){
+	public function enqueue_assets(){
 		$markitup = new Asset_Enqueuer($this->assets, $this->base_uri);
 		$markitup->enqueue_assets();
 	}

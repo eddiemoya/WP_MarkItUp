@@ -12,25 +12,19 @@ Author URL: http://eddiemoya.com
 
 define('BBP_Plugin_Path', plugin_dir_path(__FILE__));
 
-foreach ( glob( BBP_Plugin_Path."class/controller/*.php" ) as $file )
-    include_once $file;
-
-foreach ( glob( BBP_Plugin_Path."class/model/*.php" ) as $file )
+foreach ( glob( BBP_Plugin_Path."app/library/*/*/*.php" ) as $file )
     include_once $file;
 
 
 
-add_action('wp_enqueue_scripts', 'jsontest', 11);
-function jsontest(){
 	
-	 $config_path = apply_filters('markitup-enqueue-json', BBP_Plugin_Path."/config/enqueue.json");
-	 $base_uri =  plugins_url('', __FILE__);
+ $config_path = apply_filters('markitup-enqueue-json', BBP_Plugin_Path."/config/enqueue.json");
+ $base_uri =  plugins_url('', __FILE__);
 
-	 $asset_enqueuer = new Enqueue_Assets($config_path, 'BBP_Asset', $base_uri);
-	 
+ $asset_enqueuer = new Enqueue_Assets($config_path, 'BBP_Asset', $base_uri);
+ 
 
 
-}
 
 
 
