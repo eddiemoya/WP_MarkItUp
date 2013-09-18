@@ -58,6 +58,7 @@ class Config_Factory {
 	 * @param string $class Name of class that each object should be built with
 	 *
 	 * @TODO Exception Handling if $this->object_type doesnt exist as a class
+	 * @TODO Get this building of this stuff out of this class, should be in the asset controller
 	 */
 	public function build($class){
 	
