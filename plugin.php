@@ -1,7 +1,7 @@
 <?php /*
-Plugin Name: bbPress Reply with Quote
-Plugin URI: https://github.com/eddiemoya/bbPress-Reply-with-Quote
-Description:  bbPress plugin that lets users reply with a quote. This plugin contains no styling, and is no plug-n-play. It is intended for developers to use with any markup they already have in their theme, but must be configured in the theme. A setting page might be added in the future.
+Plugin Name: WP MarkItUp!
+Plugin URI: https://github.com/eddiemoya/WP_MarkItUp
+Description: Sets up MarkItUp! jQuery for easy integration with WordPress.
 Version: 0.1
 Author: Eddie Moya
 Author URL: http://eddiemoya.com
